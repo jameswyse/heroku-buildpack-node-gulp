@@ -1,39 +1,29 @@
 Heroku Buildpack for Node.js and gulp.js
 ========================================
 
-Usage
------
+Adds [gulp](https://github.com/gulpjs/gulp) support to the [standard Node buildpack](https://github.com/heroku/heroku-buildpack-nodejs).
 
-- Set your Heroku app's buildpack URL to `https://github.com/appstack/heroku-buildpack-nodejs-gulp.git`. To be safe, you should really fork this and use your fork's URL.
-- Run `heroku labs:enable user-env-compile` to enable environment variable support
-- Run `heroku config:set NODE_ENV=production` to set your environment to `production` (or any other name)
-- Add a Gulp task called `heroku:production` that builds your app
-- Install the dependenies for serving the app: `npm install gzippo express --save`
-- Create a simple web server in the root called `web.js`:
+Add a gulp task named `heroku:production` and it will be run automatically when you deploy.
 
-```
-var gzippo = require('gzippo');
-var express = require('express');
-var app = express();
+## Usage
 
-app.use(express.logger('dev'));
-app.use(gzippo.staticGzip("" + __dirname + "/build"));
-app.listen(process.env.PORT || 5000);
+```bash
+$ heroku config:set BUILDPACK_URL=https://www.github.com/jameswyse/heroku-buildpack-node-gulp.git 
+
+$ heroku labs:enable user-env-compile
+$ heroku config:set NODE_ENV=production
 ```
 
-- Add a single line `Procfile` to the root to serve the app via node:
+## Credits
 
-```
-web: node web.js
-```
+Based on [heroku-buildpack-nodejs-gulp](https://github.com/timdp/heroku-buildpack-nodejs-gulp), [heroku-buildpack-nodejs](https://github.com/heroku/heroku-buildpack-nodejs) and [heroku-buildpack-nodejs-grunt](https://github.com/mbuchetics/heroku-buildpack-nodejs-grunt)
 
-Credits
--------
+## License
 
-Inspired by [Deploying a Yeoman/Angular app to Heroku](http://www.sitepoint.com/deploying-yeomanangular-app-heroku/).
+Copyright (C) 2012-2014 Heroku, Inc.
 
-Forked from [heroku-buildpack-nodejs-gulp](https://github.com/timdp/heroku-buildpack-nodejs-gulp).
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-Which was forked from [heroku-buildpack-nodejs](https://github.com/heroku/heroku-buildpack-nodejs).
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-Heavily based on [heroku-buildpack-nodejs-grunt](https://github.com/mbuchetics/heroku-buildpack-nodejs-grunt).
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
