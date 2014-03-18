@@ -1,22 +1,26 @@
-Heroku Buildpack for Node.js and gulp.js
-========================================
+Heroku Buildpack for Node and Gulp
+==================================
 
 Adds [gulp](https://github.com/gulpjs/gulp) support to the [standard Node buildpack](https://github.com/heroku/heroku-buildpack-nodejs).
 
-Add a gulp task named `heroku:production` and it will be run automatically when you deploy.
+
 
 ## Usage
 
+Add a gulp task named `heroku:production` and it will be run automatically when you deploy.
+
 ```bash
 $ heroku config:set BUILDPACK_URL=https://www.github.com/jameswyse/heroku-buildpack-node-gulp.git 
-
 $ heroku labs:enable user-env-compile
 $ heroku config:set NODE_ENV=production
 ```
 
 ## Credits
 
-Based on [heroku-buildpack-nodejs-gulp](https://github.com/timdp/heroku-buildpack-nodejs-gulp), [heroku-buildpack-nodejs](https://github.com/heroku/heroku-buildpack-nodejs) and [heroku-buildpack-nodejs-grunt](https://github.com/mbuchetics/heroku-buildpack-nodejs-grunt)
+Based on:
+- [heroku-buildpack-nodejs-gulp](https://github.com/timdp/heroku-buildpack-nodejs-gulp)
+- [heroku-buildpack-nodejs](https://github.com/heroku/heroku-buildpack-nodejs)
+- [heroku-buildpack-nodejs-grunt](https://github.com/mbuchetics/heroku-buildpack-nodejs-grunt)
 
 ## License
 
