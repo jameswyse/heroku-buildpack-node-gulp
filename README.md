@@ -10,7 +10,7 @@ Adds [gulp](https://github.com/gulpjs/gulp) support to the [standard Node buildp
 Add a gulp task named `heroku:production` and it will be run automatically when you deploy.
 
 ```bash
-$ heroku config:set BUILDPACK_URL=https://www.github.com/jameswyse/heroku-buildpack-node-gulp.git 
+$ heroku config:set BUILDPACK_URL: https://github.com/jameswyse/heroku-buildpack-node-gulp
 $ heroku labs:enable user-env-compile
 $ heroku config:set NODE_ENV=production
 ```
